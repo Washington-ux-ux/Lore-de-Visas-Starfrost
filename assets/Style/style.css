@@ -1,0 +1,134 @@
+* {
+    font-family: "roboto", sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+
+body { 
+    background-color: #000;
+    color: #fff;
+}
+
+
+.newWorld {
+    background-image: url("/assets/imagens/Visas-header.webp");
+    background-size: cover;          
+    background-position: top center; 
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 1000px;                   
+    display: flex;              
+    align-items: center; 
+    justify-content: center;    
+    text-align: center;         
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1rem 0 0.5rem;
+    color: black;
+}
+
+.newWorld h1 {
+    margin: 0;                  
+    padding: 0 16px;            
+    color: #ffffff;             
+    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1rem 0 0.5rem;
+}
+
+p {
+    font-size: 1rem;
+    margin: 0.75rem 0;
+}
+
+blockquote {
+    font-size: 0.9rem;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    border-left: 4px solid #ccc;
+    color: #555;
+    background: #f9f9f9;
+    max-width: 900px;
+    text-align: left; 
+    background-color: #000;
+}
+
+ul {
+    list-style: none; 
+    padding-left: 0; 
+    margin: 0.5rem 0; 
+    text-align: left;  
+}
+
+li {
+    margin: 0.25rem 0; 
+    text-align: left;  
+}
+
+
+
+/* Imagens */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
+
+
+.container {
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+
+.chapters section {
+    text-align: left; 
+    
+}
+
+  .chapters section img {
+      width: 300px;       
+      height: 200px;     
+      object-fit: cover;  
+      display: inline-block; 
+      margin: 8px;       
+  }
+
+  /* Centraliza imagens que estão sozinhas no section */
+  .chapters section img:only-of-type {
+      display: block;
+      margin: 8px auto; /* centraliza horizontalmente */
+  }
+
+  /* Heurística: centraliza imagens entre textos (parágrafos/blockquote) */
+  .chapters section p + img + p,
+  .chapters section p + img + blockquote,
+  .chapters section blockquote + img + p,
+  .chapters section h2 + img + p,
+  .chapters section h2 + img + blockquote {
+      display: block;
+      margin: 12px auto;
+  }
+
+  /* Regra robusta: centraliza imagens por padrão e mantém grupos lado a lado */
+  /* Por padrão, centraliza imagens */
+  .chapters section img {
+      display: block;
+      margin: 8px auto;
+  }
+  /* Se a imagem tem uma outra imagem imediatamente após, ou é uma imagem após outra, mantém lado a lado */
+  .chapters section img:has(+ img),
+  .chapters section img + img {
+      display: inline-block;
+      margin: 8px;
+  }
