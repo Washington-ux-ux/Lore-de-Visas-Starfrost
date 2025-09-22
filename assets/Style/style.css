@@ -97,20 +97,18 @@ img {
 }
 
   .chapters section img {
-      width: 300px;       
-      height: 200px;     
-      object-fit: cover;  
-      display: inline-block; 
-      margin: 8px;       
+      width: auto;     
+      height: auto;    
+      max-width: 100%; 
+      display: block;  
+      margin: 8px auto;
   }
 
-  /* Centraliza imagens que estão sozinhas no section */
   .chapters section img:only-of-type {
       display: block;
-      margin: 8px auto; /* centraliza horizontalmente */
+      margin: 8px auto; 
   }
 
-  /* Heurística: centraliza imagens entre textos (parágrafos/blockquote) */
   .chapters section p + img + p,
   .chapters section p + img + blockquote,
   .chapters section blockquote + img + p,
@@ -120,15 +118,98 @@ img {
       margin: 12px auto;
   }
 
-  /* Regra robusta: centraliza imagens por padrão e mantém grupos lado a lado */
-  /* Por padrão, centraliza imagens */
-  .chapters section img {
-      display: block;
-      margin: 8px auto;
-  }
-  /* Se a imagem tem uma outra imagem imediatamente após, ou é uma imagem após outra, mantém lado a lado */
-  .chapters section img:has(+ img),
-  .chapters section img + img {
-      display: inline-block;
-      margin: 8px;
-  }
+  
+
+.image-frame {
+  width: min(100%, 900px);
+  height: 300px;
+  margin: 12px auto;
+  display: grid;
+  place-items: center;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.no-crop img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 8px auto;
+}
+
+.image-slider {
+  position: relative;
+  width: min(100%, 900px);
+  margin: 16px auto;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #111;
+}
+
+.image-slider .slide {
+  display: none;
+}
+
+.image-slider .slide.active {
+  display: block;
+}
+
+.chapters .image-slider img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block;
+  object-fit: contain !important;
+}
+
+.image-slider .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.image-slider .nav.prev { left: 8px; }
+.image-slider .nav.next { right: 8px; }
+
+.image-slider .dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.image-slider .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+}
+
+.image-slider .dot.active {
+  background: #fff;
+}
